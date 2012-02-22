@@ -17,6 +17,7 @@ class Evernotable::Client::Base
     raise ClientException, message
   end
 
-  attr_reader :config
-  attr_writer :instance, :client_token
+  attr_reader :config, 
+  attr_writer :instance
+  attr_accessor :client_token
 end

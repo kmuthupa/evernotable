@@ -9,27 +9,26 @@ class Evernotable::Client::NoteClient < Evernotable::Client::Base
   end
   
   def add_notebook
-    return if self.notebook_exists?
     wrap_method('attempt to create new notebook', { |client_token|
       @notebook_guid = self.instance.createNotebook(client_token, Evernote::EDAM::Type::Notebook.new({:name => @notebook_name}).guid}) 
   end
 
-  def add_note(note)
-    if notebook_exists?
-      wrap_method('attempt to create a new note', { |client_token|
-        self.instance.createNote(client_token, Evernote::EDAM::Type::Note.new({:title => note, :content => note, :notebookguid => @notebook_guid})})
-    end
+  def add_note(note_text)
+    self.add_notebook unless notebook_exists?
+    wrap_method('attempt to create a new note', { |client_token|
+      self.instance.createNote(client_token, Evernote::EDAM::Type::Note.new({:title => note_text, :content => note_text, :notebookguid => @notebook_guid})})
   end
 
-  def remove_note
-    
+  def remove_note(note_guid)
+    return unless notebook_exists?
+    wrap_method('attempt to remove a note', { |client_token|
+      self.instance.deleteNote(client_token, note_guid)
   end
   
   def list_notes
-    if notebook_exists?
-      wrap_method('attempt to list notes', { |client_token|
-        @notebook_guid = self.instance.createNotebook(client_token, Evernote::EDAM::NoteStore::NoteFilter.new({:notebookguid => @notebook_guid})})
-    end
+    return unless notebook_exists?
+    wrap_method('attempt to list notes', { |client_token|
+      @notebook_guid = self.instance.createNotebook(client_token, Evernote::EDAM::NoteStore::NoteFilter.new({:notebookguid => @notebook_guid})})
   end
   
   def list_notebooks
@@ -51,6 +50,6 @@ class Evernotable::Client::NoteClient < Evernotable::Client::Base
   private
   
   def note_url
-    "#{@api_url}/#{self.try(:client_token)}"
+    "#{@api_url}/#{self.client_token)}"
   end
 end
