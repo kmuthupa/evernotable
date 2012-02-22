@@ -1,6 +1,12 @@
 api_credentials:
     consumer_key: kswamin
     consumer_secret: dbd87f40e8507b16
-api_url: 
-    sandbox: https://sandbox.evernote.com/
-    production: https://www.evernote.com/
+user_api: 
+    sandbox: https://sandbox.evernote.com/edam/user
+    production: https://www.evernote.com/edam/user
+note_api:
+    sandbox: http://sandbox.evernote.com/edam/note/
+    production: http://www.evernote.com/edam/note/
+notebook: 
+    name: evernotable
+    
