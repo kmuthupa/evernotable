@@ -19,7 +19,7 @@ A simple commandline task manager that uses Evernote note store. This automatica
   evernotable task list
 
   # remove an existing task
-  evernotable remove #2 => removes task listed #2 
+  evernotable task remove #2 => removes task listed #2 
 
 == Dependencies
 
