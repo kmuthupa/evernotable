@@ -5,20 +5,6 @@ require "bundler/setup"
 require "evernotable/cli"
 require "rspec"
 
-# def stub_api_request(method, path)
-#   stub_request(method, "https://api.heroku.com#{path}")
-# end
-# 
-# def prepare_command(klass)
-#   command = klass.new
-#   command.stub!(:app).and_return("myapp")
-#   command.stub!(:ask).and_return("")
-#   command.stub!(:display)
-#   command.stub!(:hputs)
-#   command.stub!(:hprint)
-#   command.stub!(:heroku).and_return(mock('heroku client', :host => 'heroku.com'))
-#   command
-# end
 
 def execute(command_line)
 end
