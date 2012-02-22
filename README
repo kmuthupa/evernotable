@@ -1,0 +1,1 @@
+A simple commandline task manager that uses Evernote note store. This automatically creates a new distinct Evernote notebook for persistance of these task notes.
