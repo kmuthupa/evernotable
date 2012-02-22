@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.email       = ["karthik.m@imaginea.com"]
   s.homepage    = "http://intellisenze.wordpress.com"
   s.summary     = %q{A simple commandline task manager that uses Evernote note store}
-  s.description = %q{A simple commandline task manager that uses Evernote note store}
+  s.description = %q{A simple commandline task manager that uses Evernote note store. This automatically creates a new distinct Evernote notebook for persistance of these task notes.}
 
   s.rubyforge_project = "evernotable"
 

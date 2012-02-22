@@ -1,5 +1,4 @@
-require "evernotable/version"
+require 'evernote'
 
-module Evernotable
-  # Your code goes here...
+module Evernotable  
 end

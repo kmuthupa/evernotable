@@ -1,0 +1,6 @@
+# add self to libpath
+$:.unshift File.expand_path("../../lib", bin_file)
+
+# start up the CLI
+require "evernotable/cli"
+Evernotable::CLI.start(*ARGV)
