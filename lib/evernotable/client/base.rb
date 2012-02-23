@@ -1,10 +1,8 @@
 require 'evernote'
+require 'evernotable/client'
 require 'yaml'
 
 class Evernotable::Client::Base 
-  class ClientException < RuntimeError
-  end
-  
   def initialize
     @config = YAML.load(File.read('lib/evernote_config.yml'))
   end
@@ -17,7 +15,7 @@ class Evernotable::Client::Base
     raise ClientException, message
   end
 
-  attr_reader :config, 
+  attr_reader :config
   attr_writer :instance
   attr_accessor :client_token
 end

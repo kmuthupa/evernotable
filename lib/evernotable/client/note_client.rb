@@ -1,9 +1,9 @@
 require 'evernotable/client/base'
 
-class Evernotable::Client::NoteClient < Evernotable::Client::Base
+class Evernotable::Client::NoteClient < Evernotable::Client::Base 
   def initialize
     super
-    @api_url = @config["note_api"]["sandbox"]
+    @api_url = @config["note_api"]["sandbox"] #TODO: variablize the api env
     @notebook_name = @config["notebook"]["name"]
     self.instance = Evernote::NoteStore.new(note_url)
   end
