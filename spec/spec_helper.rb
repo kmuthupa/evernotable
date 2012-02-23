@@ -42,5 +42,4 @@ require "display_matcher"
 RSpec.configure do |config|
   config.color_enabled = true
   config.include DisplayMatcher
-  config.order = 'rand'
 end
