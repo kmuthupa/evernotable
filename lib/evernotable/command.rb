@@ -30,11 +30,11 @@ module Evernotable
         output_with_bang("Use *evernotable help* for additional information.")
         exit(1)
       end
-      object.send(method)
+      #instantiate command and invoke method on it
     rescue CommandFailed => ex
       error ex.message
     rescue Interrupt => e
-      error "\n[canceled]"
+      error "\n[command canceled]"
     end
 
   end

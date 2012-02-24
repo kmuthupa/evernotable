@@ -22,12 +22,20 @@ describe Evernotable::Command do
   end
   
   it 'should build the list of commands available' do
-    Evernotable::Command.commands.should == ['auth', 'base', 'task']
+    Evernotable::Command.commands.should =~ ['auth', 'base', 'task', 'help']
   end
   
   it 'should test valid' do
     Evernotable::Command.valid?('auth').should be_true
     Evernotable::Command.valid?('task').should be_true
     Evernotable::Command.valid?('wrong-one').should be_false
+  end
+  
+  describe '#run' do
+    it 'should display errors and exit on invalid command' do
+      STDOUT.should_receive(:puts).with("! *uncommand* is not a valid evernotable command.")
+      STDOUT.should_receive(:puts).with("! Use *evernotable help* for additional information.")
+      lambda { Evernotable::Command.run('uncommand') }.should raise_error(SystemExit)
+    end
   end
 end
