@@ -1,6 +1,6 @@
 require 'evernotable/client/base'
 
-class Evernotable::Client::UserClient < Evernotable::Client::Base 
+class Evernotable::Client::User < Evernotable::Client::Base 
   
   def initialize(params={})
     super

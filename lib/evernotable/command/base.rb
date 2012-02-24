@@ -1,6 +1,6 @@
 require "evernotable/command"
-require "evernotable/client/user_client"
-require "evernotable/client/note_client"
+require "evernotable/client/user"
+require "evernotable/client/note"
 
 class Evernotable::Command::Base
   

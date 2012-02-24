@@ -1,12 +1,12 @@
 require 'spec_helper'
-require 'evernotable/client/note_client'
+require 'evernotable/client/note'
 
-describe Evernotable::Client::NoteClient do
+describe Evernotable::Client::Note do
 
   before(:all) do
-    @user_client = Evernotable::Client::UserClient.new({:user => 'kswamin', :password => 'karth1980'})
+    @user_client = Evernotable::Client::User.new({:user => 'kswamin', :password => 'karth1980'})
     @user_client.authenticate
-    @note_client = Evernotable::Client::NoteClient.new({:user_shard => @user_client.current_user.shardId, :client_token => @user_client.client_token})
+    @note_client = Evernotable::Client::Note.new({:user_shard => @user_client.current_user.shardId, :client_token => @user_client.client_token})
     #@note_client.expunge_notebook #start with a clean slate
   end
 
