@@ -36,7 +36,7 @@ module Evernotable
       else
         #instantiate command and invoke method on it
         method = arguments.shift
-        obj = Object.const_get(cmd).capitalize.new(arguments)
+        obj = eval("Evernotable::Command::#{cmd.capitalize}").new(arguments)
         obj.send(method)
       end
     rescue CommandFailed => ex
