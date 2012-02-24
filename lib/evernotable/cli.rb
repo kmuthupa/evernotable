@@ -1,5 +1,6 @@
 require "evernotable"
 require "evernotable/command"
+require "highline"
 
 class Evernotable::CLI
 
