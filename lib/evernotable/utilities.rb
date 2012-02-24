@@ -22,6 +22,7 @@ module Evernotable
     
     def error(msg)
       STDERR.puts(format_with_bang(msg))
+      exit(1)
     end
     
     def wrap_enml(content)

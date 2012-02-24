@@ -24,9 +24,9 @@ describe Evernotable::Utilities do
   
   it 'should test error display' do
     STDERR.should_receive(:puts).with('')
-    error(nil)
+    lambda {error(nil)}.should raise_error(SystemExit)
     STDERR.should_receive(:puts).with("! error thrown")
-    error('error thrown')
+    lambda {error('error thrown')}.should raise_error(SystemExit)
   end
   
   it 'should wrap enml content around a string' do

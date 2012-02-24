@@ -25,12 +25,20 @@ module Evernotable
     end
 
     def self.run(cmd, arguments=[])
+      if cmd.nil? || cmd.empty? 
+        output_with_bang("Use *evernotable help* for additional information.")
+        exit(1)
+      end
       unless valid?(cmd)
         output_with_bang("*#{cmd}* is not a valid evernotable command.")
         output_with_bang("Use *evernotable help* for additional information.")
         exit(1)
+      else
+        #instantiate command and invoke method on it
+        method = arguments.shift
+        obj = Object.const_get(cmd).capitalize.new(arguments)
+        obj.send(method)
       end
-      #instantiate command and invoke method on it
     rescue CommandFailed => ex
       error ex.message
     rescue Interrupt => e
