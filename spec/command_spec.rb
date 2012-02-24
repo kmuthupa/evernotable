@@ -48,16 +48,22 @@ describe Evernotable::Command do
     it 'should instantiate the right command and invoke the appropriate method on it' do
       auth_mock = mock("Evernotable::Command::Auth")
       task_mock = mock("Evernotable::Command::Task")
+      help_mock = mock("Evernotable::Command::Help")
       Evernotable::Command::Auth.stub(:new).and_return(auth_mock)
       Evernotable::Command::Task.stub(:new).and_return(task_mock)
+      Evernotable::Command::Help.stub(:new).and_return(help_mock)
       auth_mock.should_receive(:login).with(no_args())
       auth_mock.should_receive(:logout).with(no_args())
       lambda { Evernotable::Command.run('auth', ['login']) }.should_not raise_error(SystemExit)
       lambda { Evernotable::Command.run('auth', ['logout']) }.should_not raise_error(SystemExit)
       task_mock.should_receive(:add)
       task_mock.should_receive(:remove)
+      task_mock.should_receive(:help)
+      help_mock.should_receive(:help)
       lambda { Evernotable::Command.run('task', ['add', 'do this right away!']) }.should_not raise_error(SystemExit)
       lambda { Evernotable::Command.run('task', ['remove', '3']) }.should_not raise_error(SystemExit)
+      lambda { Evernotable::Command.run('task') }.should_not raise_error(SystemExit)
+      lambda { Evernotable::Command.run('help') }.should_not raise_error(SystemExit)
     end
   end
 end

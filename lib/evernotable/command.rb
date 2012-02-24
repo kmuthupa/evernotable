@@ -2,11 +2,11 @@ require 'evernotable/utilities'
 
 module Evernotable
   module Command
-
-    class CommandFailed  < RuntimeError
-    end
     
     extend Evernotable::Utilities
+    
+    class CommandFailed  < RuntimeError
+    end
 
     def self.load
       @@commands = []
@@ -35,7 +35,7 @@ module Evernotable
         exit(1)
       else
         #instantiate command and invoke method on it
-        method = arguments.shift
+        method = arguments.shift || :help
         obj = eval("Evernotable::Command::#{cmd.capitalize}").new(arguments)
         obj.send(method)
       end

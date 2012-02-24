@@ -10,4 +10,8 @@ class Evernotable::Command::Auth < Evernotable::Command::Base
     
   end
   
+  def method_missing(method_name, *args)
+    
+  end
+  
 end
