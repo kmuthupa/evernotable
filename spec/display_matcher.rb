@@ -22,7 +22,6 @@ module DisplayMatcher
       end
 
       given_proc.call
-
       displayed_expected_message
     end
 
@@ -36,14 +35,14 @@ module DisplayMatcher
 
     private
 
-      def given_messages
-        if @given_messages.empty?
-          'no messages were displayed'
-        else
-          formatted_given_messages = @given_messages.map(&:inspect).join ', '
-          "the follow messages were displayed: #{ formatted_given_messages }"
-        end
+    def given_messages
+      if @given_messages.empty?
+        'no messages were displayed'
+      else
+        formatted_given_messages = @given_messages.map(&:inspect).join ', '
+        "the following messages were displayed: #{ formatted_given_messages }"
       end
+    end
 
   end
 end

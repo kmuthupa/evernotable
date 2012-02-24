@@ -1,6 +1,8 @@
 require 'evernotable/client/base'
+require 'evernotable/utilities'
 
 class Evernotable::Client::NoteClient < Evernotable::Client::Base 
+  include Evernotable::Utilities
   attr_reader :notebook_guid
   
   def initialize(params={})

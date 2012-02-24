@@ -13,14 +13,6 @@ class Evernotable::Client::Base
     @client_token = params[:client_token] || nil
   end
   
-  def wrap_enml(note_content)
-    "<?xml version='1.0' encoding='UTF-8'?>
-    <!DOCTYPE en-note SYSTEM 'http://xml.evernote.com/pub/enml2.dtd'>
-    <en-note>
-       #{note_content}
-    </en-note>"
-  end
-  
   protected 
   
   def wrap_method(message, &block)

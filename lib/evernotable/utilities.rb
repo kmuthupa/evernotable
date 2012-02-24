@@ -1,13 +1,9 @@
 module Evernotable
   module Utilities
-    def error(msg)
-      STDERR.puts(format_with_bang(msg))
-      exit 1
-    end
-
+    
     def format_with_bang(message)
       return '' if message.to_s.strip == ""
-      " !    " + message.split("\n").join("\n !    ")
+      "! " + message.split("\n").join("\n ! ")
     end
 
     def output_with_bang(message="", new_line=true)
@@ -17,11 +13,20 @@ module Evernotable
 
     def display(msg="", new_line=true)
       if new_line
-        puts(msg)
+        STDOUT.puts(msg)
       else
-        print(msg)
+        STDOUT.print(msg)
         STDOUT.flush
       end
     end
+    
+    def error(msg)
+      STDERR.puts(format_with_bang(msg))
+    end
+    
+    def wrap_enml(content)
+      "<?xml version='1.0' encoding='UTF-8'?><!DOCTYPE en-note SYSTEM 'http://xml.evernote.com/pub/enml2.dtd'><en-note>#{content}</en-note>"
+    end
+    
   end
 end
