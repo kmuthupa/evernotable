@@ -9,7 +9,7 @@ class Evernotable::Command::Base
   
   def initialize(params=[])
     @config = YAML.load(File.read('lib/evernotable_config.yml'))
-    @args = params
+    @args = params.map {|p| p.strip}
     @highline = HighLine.new
   end
   
@@ -37,5 +37,11 @@ class Evernotable::Command::Base
   end
   
   def method_missing(method_name, *args)
+  end
+  
+  protected
+  
+  def credentials_file
+    @config["credentials_file"]["path"]
   end
 end

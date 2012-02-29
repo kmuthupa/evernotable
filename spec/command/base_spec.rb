@@ -31,7 +31,7 @@ describe Evernotable::Command::Base do
       end.should_not raise_error(Evernotable::Command::CommandFailed)
     end
     
-    it 'should invoke the client method without exceptions' do
+    it 'should invoke the client method resulting in exception' do
       base_command = Evernotable::Command::Base.new
       lambda do
         base_command.invoke_client do

@@ -30,10 +30,4 @@ class Evernotable::Command::Auth < Evernotable::Command::Base
     end
   end
   
-  private
-  
-  def credentials_file
-    @config["credentials_file"]["path"]
-  end
-  
 end
