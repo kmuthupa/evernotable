@@ -10,5 +10,8 @@ note_api:
 notebook: 
     name: evernotable
 credentials_file: 
-    path: '/tmp/evernotable'
+    path: /tmp/evernotable
+encryption:
+    key: 'evern0te'
+    
     

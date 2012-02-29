@@ -22,5 +22,6 @@ Gem::Specification.new do |s|
   s.add_dependency "thrift_client"
   s.add_dependency "evernote"
   s.add_dependency "highline"
+  s.add_dependency "encrypted_strings"
   s.add_development_dependency "rspec"
 end

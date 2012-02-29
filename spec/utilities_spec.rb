@@ -33,4 +33,7 @@ describe Evernotable::Utilities do
     wrap_enml('test').should == "<?xml version='1.0' encoding='UTF-8'?><!DOCTYPE en-note SYSTEM 'http://xml.evernote.com/pub/enml2.dtd'><en-note>test</en-note>"
   end
   
+  it 'should return encrypt_key' do
+    encrypt_key.should_not be_nil
+  end
 end

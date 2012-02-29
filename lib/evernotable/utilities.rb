@@ -1,3 +1,6 @@
+require 'spec_helper'
+require 'encrypted_strings'
+
 module Evernotable
   module Utilities
     
@@ -30,11 +33,16 @@ module Evernotable
     end
     
     def write_to_file(file, content)
-      File.open(file, 'w') {|f| f.write(content)} #TODO: encrypt
+      File.open(file, 'w') {|f| f.write(content.encrypt(:symmetric, :password => encrypt_key))}
     end
     
     def read_from_file(file)
-      File.exist?(file) ? File.read(file) : '' #TODO: decrypt
+      File.exist?(file) ? File.read(file).decrypt : '' 
+    end
+    
+    def encrypt_key
+      config = YAML.load(File.read('lib/evernotable_config.yml'))
+      return config["encryption"]["key"]
     end
     
   end

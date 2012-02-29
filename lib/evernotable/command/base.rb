@@ -13,7 +13,7 @@ class Evernotable::Command::Base
   attr_reader :note_client
   
   def initialize(params=[])
-    @config = YAML.load(File.read('lib/evernote_config.yml'))
+    @config = YAML.load(File.read('lib/evernotable_config.yml'))
     @args = params
     @highline = HighLine.new
   end

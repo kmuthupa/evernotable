@@ -4,7 +4,7 @@ require 'evernotable/client/note'
 describe Evernotable::Client::Note do
 
   before(:all) do
-    @config = YAML.load(File.read('lib/evernote_config.yml'))
+    @config = YAML.load(File.read('lib/evernotable_config.yml'))
     @user_client = Evernotable::Client::User.new({:user => 'kswamin', :password => 'karth1980', :config => @config})
     @user_client.authenticate
     @note_client = Evernotable::Client::Note.new({:user_shard => @user_client.current_user.shardId, :client_token => @user_client.client_token, :config => @config})

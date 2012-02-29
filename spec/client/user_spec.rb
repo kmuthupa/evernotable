@@ -4,7 +4,7 @@ require 'evernotable/client/user'
 describe Evernotable::Client::User do
   
   before(:all) do
-    @config = YAML.load(File.read('lib/evernote_config.yml'))
+    @config = YAML.load(File.read('lib/evernotable_config.yml'))
   end
   
   it 'should appropriately be initialized' do
