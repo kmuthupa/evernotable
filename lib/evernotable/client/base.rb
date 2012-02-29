@@ -8,7 +8,7 @@ class Evernotable::Client::Base
   attr_reader :client_token
   
   def initialize(params={})
-    @config = YAML.load(File.read('lib/evernote_config.yml'))
+    @config = params[:config] || nil
     @current_user = params[:current_user] || nil
     @client_token = params[:client_token] || nil
   end

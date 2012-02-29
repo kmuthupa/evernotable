@@ -9,4 +9,6 @@ note_api:
     production: http://www.evernote.com/edam/note/
 notebook: 
     name: evernotable
+credentials_file: 
+    path: '/tmp/evernotable'
     

@@ -40,7 +40,7 @@ module Evernotable
         obj.send(method)
       end
     rescue CommandFailed => ex
-      error ex.message
+      error "Command failed: #{ex.message}"
     rescue Interrupt => e
       error "\n[command canceled]"
     end

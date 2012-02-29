@@ -29,5 +29,13 @@ module Evernotable
       "<?xml version='1.0' encoding='UTF-8'?><!DOCTYPE en-note SYSTEM 'http://xml.evernote.com/pub/enml2.dtd'><en-note>#{content}</en-note>"
     end
     
+    def write_to_file(file, content)
+      File.open(file, 'w') {|f| f.write(content)} #TODO: encrypt
+    end
+    
+    def read_from_file(file)
+      File.exist?(file) ? File.read(file) : '' #TODO: decrypt
+    end
+    
   end
 end
