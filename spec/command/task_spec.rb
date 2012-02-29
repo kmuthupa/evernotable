@@ -22,9 +22,8 @@ describe Evernotable::Command::Task do
   
   it 'should list notes successfully' do
     mock_note_client = mock('Evernotable::Client::Note')
-    mock_note_client.stub!(:list_notes).and_return([])
+    mock_note_client.stub!(:list_notes).and_return(['note1', 'note2'])
     @task_command.stub!(:note_client).and_return(mock_note_client)
-    STDOUT.should_receive(:puts).with(any_args())
     lambda {@task_command.list}.should_not raise_error(Evernotable::Command::CommandFailed)
   end
   

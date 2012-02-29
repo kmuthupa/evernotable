@@ -12,7 +12,7 @@ class Evernotable::Command::Task < Evernotable::Command::Base
   def list
     invoke_client do
       notes = note_client.list_notes
-      display notes.inspect
+      notes.collect{|n| n.title}.each{|n| display n}
     end
   end
 
