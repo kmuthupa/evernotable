@@ -36,7 +36,7 @@ module Evernotable
     end
     
     def read_from_file(file)
-      File.exist?(file) ? File.read(file).decrypt : '' 
+      File.exist?(file) ? File.read(file).decrypt(:symmetric, :password => encrypt_key) : '' 
     end
     
     def encrypt_key

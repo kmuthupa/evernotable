@@ -32,7 +32,7 @@ class Evernotable::Command::Base
     begin
       yield
     rescue Evernotable::Client::ClientException => ex
-      raise Evernotable::Command::CommandFailed, "Oops! That didn't work."
+      raise Evernotable::Command::CommandFailed, "Oops. That didn't work."
     end
   end
   
