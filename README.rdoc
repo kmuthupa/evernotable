@@ -26,6 +26,8 @@ A simple commandline task manager that uses Evernote note store. This automatica
 * evernote
 * thrift
 * thrift_client
+* encrypted_strings
+* highline
 
 == Installation
 
