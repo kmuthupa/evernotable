@@ -3,15 +3,24 @@ require "evernotable/command/base"
 class Evernotable::Command::Task < Evernotable::Command::Base
   
   def add
-    
+    invoke_client do
+      note_client.add_note(@args.first)
+      display 'Done.'
+    end
   end
-  
-  def list
-    
-  end
-  
-  def remove
 
+  def list
+    invoke_client do
+      notes = note_client.list_notes
+      display notes.inspect
+    end
+  end
+
+  def remove
+    invoke_client do
+      note_client.remove_note(@args.first)
+      display 'Done.'
+    end
   end
 
   def method_missing(method_name, *args)

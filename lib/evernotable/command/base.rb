@@ -7,11 +7,6 @@ class Evernotable::Command::Base
   
   include Evernotable::Utilities
   
-  attr_reader :config
-  attr_reader :args
-  attr_reader :user_client
-  attr_reader :note_client
-  
   def initialize(params=[])
     @config = YAML.load(File.read('lib/evernotable_config.yml'))
     @args = params
@@ -25,6 +20,19 @@ class Evernotable::Command::Base
       @user_client.authenticate
     rescue Evernotable::Client::ClientException => ex
       raise Evernotable::Command::CommandFailed, "Invalid Evernote credentials."
+    end
+  end
+  
+  def note_client
+    authenticate_user
+    Evernotable::Client::Note.new({:user_shard => @user_client.current_user.shardId, :client_token => @user_client.client_token, :config => @config})
+  end
+  
+  def invoke_client
+    begin
+      yield
+    rescue Evernotable::Client::ClientException => ex
+      raise Evernotable::Command::CommandFailed, "Oops! That didn't work."
     end
   end
   
