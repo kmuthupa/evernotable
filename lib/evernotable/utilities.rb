@@ -1,4 +1,3 @@
-require 'spec_helper'
 require 'encrypted_strings'
 
 module Evernotable
