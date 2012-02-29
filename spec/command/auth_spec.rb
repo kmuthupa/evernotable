@@ -10,32 +10,21 @@ describe Evernotable::Command::Auth do
   end
   
   describe '#login' do
-    pending 'This is pending'
+    pending 'TODO: fix auth login specs'
     # it 'should log the user in successfully using user input' do
-    #       user_mock = mock("Evernotable::Client::User")
-    #       Evernotable::Client::User.stub(:new).and_return(user_mock)
-    #       user_mock.stub!(:read_from_file).and_return(nil)
-    #       highline = mock("HighLine")
-    #       HighLine.stub(:new).and_return(highline)
-    #       highline.stub!(:ask).and_return('kswamin', 'karth1980') 
-    #       user_mock.stub!(:authenticate).and_return(true)
-    #       user_mock.stub!(:write_to_file).and_return(true)
-    #       STDOUT.should_receive(:puts).exactly(1).times.with('You were successfully authenticated.')
-    #       auth_command = Evernotable::Command::Auth.new
-    #       lambda {auth_command.send(:login)}.should_not raise_error(Evernotable::Command::CommandFailed)
-    #     end
-    #     
-    #     it 'should log the user in successfully using credentials file' do
-    #       user_mock = mock("Evernotable::Client::User")
-    #       Evernotable::Client::User.stub(:new).and_return(user_mock)
-    #       user_mock.stub!(:read_from_file).and_return('kswamin/karth1980')
-    #       user_mock.stub!(:authenticate).and_return(true)
-    #       user_mock.stub!(:write_to_file).and_return(true)
-    #       STDOUT.should_receive(:puts).exactly(1).times.with('You were successfully authenticated.')
-    #       auth_command = Evernotable::Command::Auth.new
-    #       lambda {auth_command.send(:login)}.should_not raise_error(Evernotable::Command::CommandFailed)
-    #     end
-    #     
+    #   user_mock = mock("Evernotable::Client::User")
+    #   Evernotable::Client::User.stub(:new).and_return(user_mock)
+    #   user_mock.stub!(:read_from_file).and_return(nil)
+    #   highline = mock("HighLine")
+    #   HighLine.stub(:new).and_return(highline)
+    #   highline.stub!(:ask).and_return('kswamin', 'dumbass') 
+    #   user_mock.stub!(:authenticate).and_return(true)
+    #   user_mock.stub!(:write_to_file).and_return(true)
+    #   STDOUT.should_receive(:puts).exactly(1).times.with('You were successfully authenticated.')
+    #   auth_command = Evernotable::Command::Auth.new
+    #   lambda {auth_command.send(:login)}.should_not raise_error(Evernotable::Command::CommandFailed)
+    # end
+
     # it 'should fail authenticating the user' do
     #   user_mock = mock("Evernotable::Client::User")
     #   Evernotable::Client::User.stub(:new).and_return(user_mock)
