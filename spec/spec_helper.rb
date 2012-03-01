@@ -14,3 +14,10 @@ RSpec.configure do |config|
   config.color_enabled = true
   config.include DisplayMatcher
 end
+
+class StubNote 
+  attr_reader :title
+  def initialize(title)
+    @title = title
+  end
+end

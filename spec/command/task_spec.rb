@@ -2,6 +2,7 @@ require 'spec_helper'
 require 'evernotable/command/task'
 
 describe Evernotable::Command::Task do
+  
   before(:all) do
     @task_command = Evernotable::Command::Task.new(['dude!'])
   end
@@ -44,10 +45,21 @@ describe Evernotable::Command::Task do
     end
   end
   
-  it 'should list notes successfully' do
-    mock_note_client = mock('Evernotable::Client::Note')
-    mock_note_client.stub!(:list_notes).and_return(['note1', 'note2'])
-    @task_command.stub!(:note_client).and_return(mock_note_client)
-    lambda {@task_command.list}.should_not raise_error(Evernotable::Command::CommandFailed)
+  describe '#list notes' do
+    it 'should not list notes when there is nothing ' do
+      mock_note_client = mock('Evernotable::Client::Note')
+      mock_note_client.stub!(:list_notes).and_return([])
+      @task_command.stub!(:note_client).and_return(mock_note_client)
+      STDOUT.should_receive(:puts).exactly(1).times.with('No tasks!')
+      lambda {@task_command.list}.should_not raise_error(Evernotable::Command::CommandFailed)
+    end
+    
+    it 'should list notes successfully' do
+      mock_note_client = mock('Evernotable::Client::Note')
+      mock_note_client.stub!(:list_notes).and_return([StubNote.new('note1'), StubNote.new('note2')])
+      @task_command.stub!(:note_client).and_return(mock_note_client)
+      STDOUT.should_receive(:puts).exactly(2).times.with(any_args())
+      lambda {@task_command.list}.should_not raise_error(Evernotable::Command::CommandFailed)
+    end
   end
 end

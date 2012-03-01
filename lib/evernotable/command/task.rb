@@ -16,7 +16,11 @@ class Evernotable::Command::Task < Evernotable::Command::Base
   def list
     invoke_client do
       notes = note_client.list_notes
-      notes.collect{|n| n.title}.each_with_index{|n, i| display "#{i+1}. #{n}"}
+      if notes.empty?
+        display 'No tasks!'
+      else
+        notes.collect{|n| n.title}.each_with_index{|n, i| display "#{i+1}. #{n}"}
+      end
     end
   end
 
