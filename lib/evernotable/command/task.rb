@@ -4,8 +4,12 @@ class Evernotable::Command::Task < Evernotable::Command::Base
   
   def add
     invoke_client do
-      note_client.add_note(@args.first)
-      display 'Done.'
+      unless @args.empty?
+        note_client.add_note(@args.first)
+        display 'Done.'
+      else
+        display 'Nothing to add!'
+      end
     end
   end
 
@@ -18,8 +22,12 @@ class Evernotable::Command::Task < Evernotable::Command::Base
 
   def remove
     invoke_client do
-      note_client.remove_note(@args.first)
-      display 'Done.'
+      unless @args.empty?
+        note_client.remove_note(@args.first)
+        display 'Done.' 
+      else
+        display 'Nothing to remove!'
+      end
     end
   end
 
