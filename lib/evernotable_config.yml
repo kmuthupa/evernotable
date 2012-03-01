@@ -6,7 +6,7 @@ user_api:
     production: https://www.evernote.com/edam/user
 note_api:
     sandbox: http://sandbox.evernote.com/edam/note/
-    production: http://www.evernote.com/edam/note/
+    production: https://www.evernote.com/edam/note/
 notebook: 
     name: evernotable
 credentials_file: 
