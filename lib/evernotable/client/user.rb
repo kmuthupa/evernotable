@@ -4,7 +4,7 @@ class Evernotable::Client::User < Evernotable::Client::Base
   
   def initialize(params={})
     super
-    api = @config["user_api"]["sandbox"] #TODO: variablize the api env
+    api = @config["user_api"][@env] 
     @instance = Evernote::UserStore.new(api, {:username => params[:user], :password => params[:password], :consumer_key => @config["api_credentials"]["consumer_key"], :consumer_secret => @config["api_credentials"]["consumer_secret"]})
   end
   

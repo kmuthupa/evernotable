@@ -7,15 +7,16 @@ class Evernotable::Command::Base
   
   include Evernotable::Utilities
   
-  def initialize(params=[])
+  def initialize(params=[], env=:sandbox)
     @config = YAML.load(File.read('lib/evernotable_config.yml'))
+    @env = env.to_s
     @args = params.map {|p| p.strip}
     @highline = HighLine.new
   end
   
   def authenticate_user(user=[])
     user = read_from_file(credentials_file).split('/') if user.empty?
-    @user_client = Evernotable::Client::User.new({:user => user.first, :password => user.last, :config => @config})
+    @user_client = Evernotable::Client::User.new({:user => user.first, :password => user.last, :config => @config, :env => @env})
     begin
       @user_client.authenticate
     rescue Evernotable::Client::ClientException => ex
@@ -25,7 +26,7 @@ class Evernotable::Command::Base
   
   def note_client
     authenticate_user
-    Evernotable::Client::Note.new({:user_shard => @user_client.current_user.shardId, :client_token => @user_client.client_token, :config => @config})
+    Evernotable::Client::Note.new({:user_shard => @user_client.current_user.shardId, :client_token => @user_client.client_token, :config => @config, :env => @env})
   end
   
   def invoke_client

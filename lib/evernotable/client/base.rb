@@ -3,12 +3,12 @@ require 'evernotable/client'
 require 'yaml'
 
 class Evernotable::Client::Base 
-  attr_reader :config
   attr_reader :current_user
   attr_reader :client_token
   
   def initialize(params={})
     @config = params[:config] || nil
+    @env = params[:env]
     @current_user = params[:current_user] || nil
     @client_token = params[:client_token] || nil
   end

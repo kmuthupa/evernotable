@@ -5,15 +5,14 @@ describe Evernotable::Client::Note do
 
   before(:all) do
     @config = YAML.load(File.read('lib/evernotable_config.yml'))
-    @user_client = Evernotable::Client::User.new({:user => 'kswamin', :password => 'dumbass', :config => @config})
+    @user_client = Evernotable::Client::User.new({:user => 'kswamin', :password => 'dumbass', :config => @config, :env => 'sandbox'})
     @user_client.authenticate
-    @note_client = Evernotable::Client::Note.new({:user_shard => @user_client.current_user.shardId, :client_token => @user_client.client_token, :config => @config})
+    @note_client = Evernotable::Client::Note.new({:user_shard => @user_client.current_user.shardId, :client_token => @user_client.client_token, :config => @config, :env => 'sandbox'})
     #@note_client.expunge_notebook #TODO: doesn't work for some weird reason, investigate
   end
 
   it 'should appropriately be initialized' do
     @note_client.should_not be_nil
-    @note_client.config.should_not be_nil
     @note_client.notebook_guid.should be_nil
   end
 

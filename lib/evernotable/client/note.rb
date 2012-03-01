@@ -7,7 +7,7 @@ class Evernotable::Client::Note < Evernotable::Client::Base
   
   def initialize(params={})
     super(params)
-    @api = @config["note_api"]["sandbox"] #TODO: variablize the api env
+    @api = @config["note_api"][@env] 
     @notebook_name = @config["notebook"]["name"]
     @notebook_guid = nil
     @instance = Evernote::NoteStore.new("#{@api}#{params[:user_shard]}")

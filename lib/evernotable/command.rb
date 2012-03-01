@@ -24,7 +24,7 @@ module Evernotable
        @@commands.include?(cmd)
     end
 
-    def self.run(cmd, arguments=[])
+    def self.run(cmd, arguments=[], env=:sandbox)
       if cmd.nil? || cmd.empty? 
         output_with_bang("Use *evernotable help* for additional information.")
         exit(1)
@@ -36,7 +36,7 @@ module Evernotable
       else
         #instantiate command and invoke method on it
         method = arguments.shift || :help
-        obj = eval("Evernotable::Command::#{cmd.capitalize}").new(arguments)
+        obj = eval("Evernotable::Command::#{cmd.capitalize}").new(arguments, env)
         obj.send(method)
       end
     rescue CommandFailed => ex
